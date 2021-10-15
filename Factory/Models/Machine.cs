@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace Factory
 {
-  public class ClassName
+  public class Machine
   {
     // properties, constructors, methods, etc. go here
   }
