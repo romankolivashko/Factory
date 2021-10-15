@@ -1,0 +1,51 @@
+@font-face {
+  font-family: myFont;
+  src: url('../fonts/Bohemian\ Typewriter.ttf');
+}
+
+div#footer {
+  position:fixed;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  color:#CCC;
+  background:#333;
+  padding:8px;
+}
+
+
+body {
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-weight: 400;
+  font-weight: 400;
+}
+
+img {
+  height: 300px;
+  width: auto;
+}
+
+.container {
+  padding: 2em;
+  text-align: left;
+  font-size: 20px;
+  margin-top: 80px;
+  /* border: 1px solid #fff; */
+  /* background-color: transparent;
+  border: transparent; */
+  margin-bottom: 15px;
+}
+
+a {
+  color: #49f8fb ;
+}
+
+.inner {
+  margin-top: 4em;
+}
+
+.brdr {
+  border: 1px solid #fff;
+}

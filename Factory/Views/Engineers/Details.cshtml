@@ -2,35 +2,34 @@
   Layout = "_Layout";
 }
 
-@model Factory.Models.Survivor
+@model Factory.Models.Engineer
 
-<h2>Survivor Details</h2>
+<h2>Engineer Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Description): @Html.DisplayFor(model => model.Description)</h3>
-<p>Enrolled: @Model.Arrived.ToString("d")</p>
+<p>Hired: @Model.Hired.ToString("d")</p>
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This engineer does not belong to any machines.</p>
+  <p>This engineer is not assigned to any machine.</p>
 }
 else
 {
-  <h4>Machines this engineer belongs to:</h4>
-    <ul>
+  <h4>Machines this engineer assigned to:</h4>
+    <ul style="list-style-type:none;">
     @foreach(var join in Model.JoinEntities)
     {
-      <li class="list-group-item">@join.Machine.Name</li>
+      <li>@join.Machine.Name</li>
       @using (Html.BeginForm("DeleteMachine", "Engineers"))
       {
-        @Html.Hidden("joinId", @join.MachineSurvivorId)
-        <input type="submit" value="Delete"/>
+        @Html.Hidden("joinId", @join.MachineEngineerId) <input type="submit" value="Delete"/>
       }
     }
     </ul>
 }
 
 <p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Edit Survivor", "Edit", new { id = Model.SurvivorId })</p>
-<p>@Html.ActionLink("Delete Survivor", "Delete", new { id = Model.SurvivorId })</p>
-<p>@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.SurvivorId })</p>
+<p>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</p>
+<p>@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.EngineerId })</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>
