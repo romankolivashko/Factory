@@ -5,11 +5,11 @@
 @using Factory.Models;
 
 <div class="row justify-content-start">
-  <div class="col">
-    <p>@Html.ActionLink("Add new machine", "Create")</p>
-    <p>@Html.ActionLink("Return Home", "Index", "Home")</p>
+  <div class="col-3">
+    <h3>@Html.ActionLink("Add new machine", "Create")</h3>
+    <h3>@Html.ActionLink("Return Home", "Index", "Home")</h3>
   </div>
-  <div class="col">
+  <div class="col-9">
 
     <h1>Machines</h1>
 
@@ -21,7 +21,7 @@
     <ul style="list-style-type:none;">
       @foreach (Machine machine in Model)
       {
-        <li>@Html.ActionLink($"{machine.Name}", "Details", new { id = machine.MachineId })</li>
+        <li><h3>@Html.ActionLink($"{machine.Name}", "Details", new { id = machine.MachineId })</h3></li>
       }
     </ul>
   </div>

@@ -7,20 +7,20 @@
 
 
 <div class="row justify-content-start">
-  <div class="col">
-    <p>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</p>
-    <p>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</p>
-    <p>@Html.ActionLink("Back to Machines", "Index")</p>
-    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  <div class="col-4">
+    <h3>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</h3>
+    <h3>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</h3>
+    <h3>@Html.ActionLink("Back to Machines", "Index")</h3>
+    <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
   </div>
-  <div class="col">
+  <div class="col-8">
     <h2><u>Machine Details</u></h2>
     <hr />
     <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
 
         @if (@Model.JoinEntities.Count == 0)
         {
-          <p>No enginners assinged to this machine.</p>
+          <h3>No enginners assinged to this machine.</h3>
         }
         else
         {
