@@ -1,6 +1,6 @@
 # Dr. Sillystringz's Factory
 
-#### MVC web application to help kepp track of the factory machine repairs.
+#### MVC web application to help keeping track of the factory machine repairs.
 
 #### By Roman Kolivashko
 
