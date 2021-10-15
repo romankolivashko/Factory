@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Factory.Models.Engineer
+
+<h4>Add new engineer</h4>
+<br>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Description)
+    <span></span>
+    @Html.TextBoxFor(model => model.Description)
+    <span></span>
+    @Html.LabelFor(model => model.Arrived)
+    <span></span>
+    @Html.TextBoxFor(model => model.Arrived, new {type = "date"})
+    <span></span>
+    @Html.Label("Select Shelter")
+    <span></span>
+    @Html.DropDownList("ShelterId")
+    @* @Html.HiddenFor(model => model.Completed) *@
+    <input type="submit" value="Add new engineer" class="btn btn-default"/>
+}
+
+
+
+<div class="row justify-content-start">
+        <div class="col-sm-4">
+        <p>@Html.ActionLink("Show all engineers", "Index")</p>
+        </div>
+        <div class="col-sm-4">
+        <p>@Html.ActionLink("Home", "Index", "Home")</p>
+        </div>
+</div>

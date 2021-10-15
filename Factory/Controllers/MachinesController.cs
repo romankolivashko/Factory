@@ -38,7 +38,7 @@ namespace Factory.Controllers
     {
       var thisMachineEngineer = _db.MachineEngineers
         .Include(category => category.JoinEntities)
-        .ThenInclude(join => join.Survivor)
+        .ThenInclude(join => join.Engineer)
         .FirstOrDefault(category => category.MachineEngineerId == id);
       return View(thisMachineEngineer);
     }

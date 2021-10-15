@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace FalloutFactory.Models
+namespace FactoryFactory.Models
 {
   public class Machine
   {
