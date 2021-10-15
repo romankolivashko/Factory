@@ -45,7 +45,7 @@ namespace Factory.Controllers
 
     public ActionResult Edit(int id)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(category => category.MachineEngineerId == id);
+      var thisMachine = _db.Machines.FirstOrDefault(category => category.MachineId == id);
       return View(thisMachine);
     }
 
@@ -59,7 +59,7 @@ namespace Factory.Controllers
 
     public ActionResult Delete(int id)
     {
-      var thisMachine = _db.Machines.FirstOrDefault(category => category.MachineEngineerId == id);
+      var thisMachine = _db.Machines.FirstOrDefault(category => category.MachineId == id);
       return View(thisMachine);
     }
 

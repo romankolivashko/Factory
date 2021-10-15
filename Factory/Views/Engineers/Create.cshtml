@@ -12,14 +12,14 @@
     <span></span>
     @Html.TextBoxFor(model => model.Description)
     <span></span>
-    @Html.LabelFor(model => model.Arrived)
+    @Html.LabelFor(model => model.Hired)
     <span></span>
-    @Html.TextBoxFor(model => model.Arrived, new {type = "date"})
+    @Html.TextBoxFor(model => model.Hired, new {type = "date"})
     <span></span>
     @Html.Label("Select Shelter")
     <span></span>
     @Html.DropDownList("ShelterId")
-    @* @Html.HiddenFor(model => model.Completed) *@
+    @* @Html.HiddenFor(model => model.Licenced) *@
     <input type="submit" value="Add new engineer" class="btn btn-default"/>
 }
 

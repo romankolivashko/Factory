@@ -17,7 +17,7 @@
 {
   <li>
     @Html.ActionLink($"{engineer.Description}", "Details", new { id = engineer.EngineerId })
-    @if (engineer.Completed == true)
+    @if (engineer.Licenced == true)
     {
       <span> - completed</span>;
     }
