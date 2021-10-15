@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Factory.Migrations
 {
     [DbContext(typeof(FactoryContext))]
-    [Migration("20211015175034_Initial")]
+    [Migration("20211015191813_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -18,26 +18,6 @@ namespace Factory.Migrations
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
                 .HasAnnotation("ProductVersion", "5.0.0");
-
-            modelBuilder.Entity("Factory.Models.Engineer", b =>
-                {
-                    b.Property<int>("EngineerId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("longtext CHARACTER SET utf8mb4");
-
-                    b.Property<DateTime>("Hired")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<bool>("Licenced")
-                        .HasColumnType("tinyint(1)");
-
-                    b.HasKey("EngineerId");
-
-                    b.ToTable("Engineers");
-                });
 
             modelBuilder.Entity("Factory.Models.Machine", b =>
                 {
@@ -53,52 +33,72 @@ namespace Factory.Migrations
                     b.ToTable("Machines");
                 });
 
-            modelBuilder.Entity("Factory.Models.MachineEngineer", b =>
+            modelBuilder.Entity("Factory.Models.MachineSurvivor", b =>
                 {
-                    b.Property<int>("MachineEngineerId")
+                    b.Property<int>("MachineSurvivorId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<int>("EngineerId")
                         .HasColumnType("int");
 
                     b.Property<int>("MachineId")
                         .HasColumnType("int");
 
-                    b.HasKey("MachineEngineerId");
+                    b.Property<int>("SurvivorId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("EngineerId");
+                    b.HasKey("MachineSurvivorId");
 
                     b.HasIndex("MachineId");
 
-                    b.ToTable("MachineEngineer");
+                    b.HasIndex("SurvivorId");
+
+                    b.ToTable("MachineSurvivor");
                 });
 
-            modelBuilder.Entity("Factory.Models.MachineEngineer", b =>
+            modelBuilder.Entity("Factory.Models.Survivor", b =>
                 {
-                    b.HasOne("Factory.Models.Engineer", "Engineer")
-                        .WithMany("JoinEntities")
-                        .HasForeignKey("EngineerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("SurvivorId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
+                    b.Property<DateTime>("Arrived")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool>("Completed")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
+
+                    b.HasKey("SurvivorId");
+
+                    b.ToTable("Engineers");
+                });
+
+            modelBuilder.Entity("Factory.Models.MachineSurvivor", b =>
+                {
                     b.HasOne("Factory.Models.Machine", "Machine")
                         .WithMany("JoinEntities")
                         .HasForeignKey("MachineId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Engineer");
+                    b.HasOne("Factory.Models.Survivor", "Survivor")
+                        .WithMany("JoinEntities")
+                        .HasForeignKey("SurvivorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Machine");
+
+                    b.Navigation("Survivor");
                 });
 
-            modelBuilder.Entity("Factory.Models.Engineer", b =>
+            modelBuilder.Entity("Factory.Models.Machine", b =>
                 {
                     b.Navigation("JoinEntities");
                 });
 
-            modelBuilder.Entity("Factory.Models.Machine", b =>
+            modelBuilder.Entity("Factory.Models.Survivor", b =>
                 {
                     b.Navigation("JoinEntities");
                 });

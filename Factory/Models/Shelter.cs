@@ -6,11 +6,11 @@ namespace Factory.Models
   {
     public Machine()
     {
-        this.JoinEntities = new HashSet<MachineEngineer>();
+        this.JoinEntities = new HashSet<MachineSurvivor>();
     }
 
     public int MachineId { get; set; }
     public string Name { get; set; }
-    public virtual ICollection<MachineEngineer> JoinEntities { get; set; }
+    public virtual ICollection<MachineSurvivor> JoinEntities { get; set; }
   }
 }

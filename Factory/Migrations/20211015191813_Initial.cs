@@ -12,15 +12,15 @@ namespace Factory.Migrations
                 name: "Engineers",
                 columns: table => new
                 {
-                    EngineerId = table.Column<int>(type: "int", nullable: false)
+                    SurvivorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Description = table.Column<string>(type: "longtext CHARACTER SET utf8mb4", nullable: true),
-                    Licenced = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    Hired = table.Column<DateTime>(type: "datetime(6)", nullable: false)
+                    Completed = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    Arrived = table.Column<DateTime>(type: "datetime(6)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Engineers", x => x.EngineerId);
+                    table.PrimaryKey("PK_Engineers", x => x.SurvivorId);
                 });
 
             migrationBuilder.CreateTable(
@@ -37,25 +37,25 @@ namespace Factory.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "MachineEngineer",
+                name: "MachineSurvivor",
                 columns: table => new
                 {
-                    MachineEngineerId = table.Column<int>(type: "int", nullable: false)
+                    MachineSurvivorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    EngineerId = table.Column<int>(type: "int", nullable: false),
+                    SurvivorId = table.Column<int>(type: "int", nullable: false),
                     MachineId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MachineEngineer", x => x.MachineEngineerId);
+                    table.PrimaryKey("PK_MachineSurvivor", x => x.MachineSurvivorId);
                     table.ForeignKey(
-                        name: "FK_MachineEngineer_Engineers_EngineerId",
-                        column: x => x.EngineerId,
+                        name: "FK_MachineSurvivor_Engineers_SurvivorId",
+                        column: x => x.SurvivorId,
                         principalTable: "Engineers",
-                        principalColumn: "EngineerId",
+                        principalColumn: "SurvivorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_MachineEngineer_Machines_MachineId",
+                        name: "FK_MachineSurvivor_Machines_MachineId",
                         column: x => x.MachineId,
                         principalTable: "Machines",
                         principalColumn: "MachineId",
@@ -63,20 +63,20 @@ namespace Factory.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_MachineEngineer_EngineerId",
-                table: "MachineEngineer",
-                column: "EngineerId");
+                name: "IX_MachineSurvivor_MachineId",
+                table: "MachineSurvivor",
+                column: "MachineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MachineEngineer_MachineId",
-                table: "MachineEngineer",
-                column: "MachineId");
+                name: "IX_MachineSurvivor_SurvivorId",
+                table: "MachineSurvivor",
+                column: "SurvivorId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MachineEngineer");
+                name: "MachineSurvivor");
 
             migrationBuilder.DropTable(
                 name: "Engineers");

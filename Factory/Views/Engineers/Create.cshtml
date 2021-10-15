@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model Factory.Models.Engineer
+@model Factory.Models.Survivor
 
 <h4>Add new engineer</h4>
 <br>
@@ -12,14 +12,14 @@
     <span></span>
     @Html.TextBoxFor(model => model.Description)
     <span></span>
-    @Html.LabelFor(model => model.Hired)
+    @Html.LabelFor(model => model.Arrived)
     <span></span>
-    @Html.TextBoxFor(model => model.Hired, new {type = "date"})
+    @Html.TextBoxFor(model => model.Arrived, new {type = "date"})
     <span></span>
-    @Html.Label("Select Shelter")
+    @Html.Label("Select Machine")
     <span></span>
-    @Html.DropDownList("ShelterId")
-    @* @Html.HiddenFor(model => model.Licenced) *@
+    @Html.DropDownList("MachineId")
+    @* @Html.HiddenFor(model => model.Completed) *@
     <input type="submit" value="Add new engineer" class="btn btn-default"/>
 }
 

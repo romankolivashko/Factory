@@ -1,8 +1,9 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
-using Factory.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using Factory.Models;
 
 namespace Factory.Controllers
 {
@@ -17,57 +18,94 @@ namespace Factory.Controllers
 
     public ActionResult Index()
     {
-      List<Engineer> model = _db.Engineers.ToList();
-      return View(model);
+      return View(_db.Engineers.OrderBy(engineer => engineer.Arrived).ToList());
     }
 
     public ActionResult Create()
     {
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
       return View();
-    }
-
-    [HttpPost]
-    public ActionResult Create(Engineer category)
-    {
-      _db.Engineers.Add(category);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      var thisEngineer = _db.Engineers
-        .Include(category => category.JoinEntities)
-        .ThenInclude(join => join.Engineer)
-        .FirstOrDefault(category => category.EngineerId == id);
-      return View(thisEngineer);
+      var thisSurvivor = _db.Engineers
+        .Include(engineer => engineer.JoinEntities)
+        .ThenInclude(join => join.Machine)
+        .FirstOrDefault(engineer => engineer.SurvivorId == id);
+      return View(thisSurvivor);
+    }
+
+    [HttpPost]
+    public ActionResult Create(Survivor engineer, int MachineId)
+    {
+      _db.Engineers.Add(engineer);
+      _db.SaveChanges();
+      if (MachineId != 0)
+      {
+        _db.MachineSurvivor.Add(new MachineSurvivor() { MachineId = MachineId, SurvivorId = engineer.SurvivorId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
     public ActionResult Edit(int id)
     {
-      var thisEngineer = _db.Engineers.FirstOrDefault(category => category.EngineerId == id);
-      return View(thisEngineer);
+      var thisSurvivor = _db.Engineers.FirstOrDefault(engineer => engineer.SurvivorId == id);
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+      return View(thisSurvivor);
     }
 
     [HttpPost]
-    public ActionResult Edit(Engineer category)
+    public ActionResult Edit(Survivor engineer, int MachineId)
     {
-      _db.Entry(category).State = EntityState.Modified;
+      if (MachineId != 0)
+      {
+        _db.MachineSurvivor.Add(new MachineSurvivor() { MachineId = MachineId, SurvivorId = engineer.SurvivorId });
+      }
+      _db.Entry(engineer).State = EntityState.Modified;
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)
     {
-      var thisEngineer = _db.Engineers.FirstOrDefault(category => category.EngineerId == id);
-      return View(thisEngineer);
+        var thisSurvivor = _db.Engineers.FirstOrDefault(engineer => engineer.SurvivorId == id);
+        return View(thisSurvivor);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisEngineer = _db.Engineers.FirstOrDefault(category => category.EngineerId == id);
-      _db.Engineers.Remove(thisEngineer);
+        var thisSurvivor = _db.Engineers.FirstOrDefault(engineer => engineer.SurvivorId == id);
+        _db.Engineers.Remove(thisSurvivor);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult AddMachine(int id)
+    {
+      var thisSurvivor = _db.Engineers.FirstOrDefault(engineer => engineer.SurvivorId == id);
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
+      return View(thisSurvivor);
+    }
+
+    [HttpPost]
+    public ActionResult AddMachine(Survivor engineer, int MachineId)
+    {
+      if (MachineId != 0)
+      {
+        _db.MachineSurvivor.Add(new MachineSurvivor() { MachineId = MachineId, SurvivorId = engineer.SurvivorId });
+      }
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult DeleteMachine(int joinId)
+    {
+      var joinEntry = _db.MachineSurvivor.FirstOrDefault(entry => entry.MachineSurvivorId == joinId);
+      _db.MachineSurvivor.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

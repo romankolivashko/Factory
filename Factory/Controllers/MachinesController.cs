@@ -38,7 +38,7 @@ namespace Factory.Controllers
     {
       var thisMachine = _db.Machines
         .Include(category => category.JoinEntities)
-        .ThenInclude(join => join.Engineer)
+        .ThenInclude(join => join.Survivor)
         .FirstOrDefault(category => category.MachineId == id);
       return View(thisMachine);
     }
@@ -66,8 +66,8 @@ namespace Factory.Controllers
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisMachineEngineer = _db.Machines.FirstOrDefault(category => category.MachineId == id);
-      _db.Machines.Remove(thisMachineEngineer);
+      var thisMachine = _db.Machines.FirstOrDefault(category => category.MachineId == id);
+      _db.Machines.Remove(thisMachine);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

@@ -2,7 +2,7 @@
   Layout = "_Layout";
 }
 
-@model Factory.Models.Engineer
+@model Factory.Models.Survivor
 
 <h2>Edit</h2>
 
@@ -10,18 +10,18 @@
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.EngineerId)
+  @Html.HiddenFor(model => model.SurvivorId)
 
   @Html.LabelFor(model => model.Description)
   @Html.EditorFor(model => model.Description)
 
-  @Html.LabelFor(model => model.Hired)
-  @Html.EditorFor(model => model.Hired)
+  @Html.LabelFor(model => model.Arrived)
+  @Html.EditorFor(model => model.Arrived)
 
-  @Html.Label("Select Shelter")
-  @Html.DropDownList("ShelterId")
-  @Html.LabelFor(model => model.Licenced)
-  @Html.CheckBoxFor(model => model.Licenced)
+  @Html.Label("Select Machine")
+  @Html.DropDownList("MachineId")
+  @Html.LabelFor(model => model.Completed)
+  @Html.CheckBoxFor(model => model.Completed)
   <input type="submit" value="Save"/>
 }
 

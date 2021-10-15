@@ -3,7 +3,7 @@
 }
 
 @using Factory.Models;
-@model List<Factory.Models.Engineer>;
+@model List<Factory.Models.Survivor>;
 
 <h1>Engineers</h1>
 
@@ -13,11 +13,11 @@
 }
 
 <ul style="list-style-type:none;">
-@foreach (Engineer engineer in Model)
+@foreach (Survivor engineer in Model)
 {
   <li>
-    @Html.ActionLink($"{engineer.Description}", "Details", new { id = engineer.EngineerId })
-    @if (engineer.Licenced == true)
+    @Html.ActionLink($"{engineer.Description}", "Details", new { id = engineer.SurvivorId })
+    @if (engineer.Completed == true)
     {
       <span> - completed</span>;
     }
