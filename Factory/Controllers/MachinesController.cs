@@ -17,7 +17,7 @@ namespace Factory.Controllers
 
     public ActionResult Index()
     {
-      List<MachineEngineer> model = _db.MachineEngineers.ToList();
+      List<Machine> model = _db.Machines.ToList();
       return View(model);
     }
 
@@ -27,30 +27,30 @@ namespace Factory.Controllers
     }
 
     [HttpPost]
-    public ActionResult Create(MachineEngineer category)
+    public ActionResult Create(Machine category)
     {
-      _db.MachineEngineers.Add(category);
+      _db.Machines.Add(category);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      var thisMachineEngineer = _db.MachineEngineers
+      var thisMachine = _db.Machines
         .Include(category => category.JoinEntities)
         .ThenInclude(join => join.Engineer)
-        .FirstOrDefault(category => category.MachineEngineerId == id);
-      return View(thisMachineEngineer);
+        .FirstOrDefault(category => category.MachineId == id);
+      return View(thisMachine);
     }
 
     public ActionResult Edit(int id)
     {
-      var thisMachineEngineer = _db.MachineEngineers.FirstOrDefault(category => category.MachineEngineerId == id);
-      return View(thisMachineEngineer);
+      var thisMachine = _db.Machines.FirstOrDefault(category => category.MachineEngineerId == id);
+      return View(thisMachine);
     }
 
     [HttpPost]
-    public ActionResult Edit(MachineEngineer category)
+    public ActionResult Edit(Machine category)
     {
       _db.Entry(category).State = EntityState.Modified;
       _db.SaveChanges();
@@ -59,15 +59,15 @@ namespace Factory.Controllers
 
     public ActionResult Delete(int id)
     {
-      var thisMachineEngineer = _db.MachineEngineers.FirstOrDefault(category => category.MachineEngineerId == id);
-      return View(thisMachineEngineer);
+      var thisMachine = _db.Machines.FirstOrDefault(category => category.MachineEngineerId == id);
+      return View(thisMachine);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisMachineEngineer = _db.MachineEngineers.FirstOrDefault(category => category.MachineEngineerId == id);
-      _db.MachineEngineers.Remove(thisMachineEngineer);
+      var thisMachineEngineer = _db.Machines.FirstOrDefault(category => category.MachineId == id);
+      _db.Machines.Remove(thisMachineEngineer);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

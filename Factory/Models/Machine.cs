@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace FactoryFactory.Models
+namespace Factory.Models
 {
   public class Machine
   {
