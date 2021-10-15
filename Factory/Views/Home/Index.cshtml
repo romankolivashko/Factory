@@ -2,22 +2,14 @@
   Layout = "_Layout";
 }
 
-  <div class="row">
-    <div class="col-6 inner">
-      <h1>Factory Floor</h1>
-      <br>
-      <br>
-      <div class="row">
-        <div class="col-6">
-        <p>@Html.ActionLink("See all machines", "Index", "Machines")</p>
-        </div>
-        <div class="col-6">
-        <p>@Html.ActionLink("See all engineers", "Index", "Engineers")</p>
-        </div>
-      </div>
-    </div>
-    <div class="col-6">
-      <img src="~/img/arm.png" class="float-right" alt="...">
-    </div>
+<h1>Factory Floor</h1>
+<br>
+<br>
+<div class="row justify-content-start">
+  <div class="col">
+    <p>@Html.ActionLink("See all machines", "Index", "Machines")</p>
   </div>
-
+  <div class="col">
+    <p>@Html.ActionLink("See all engineers", "Index", "Engineers")</p>
+  </div>
+</div>

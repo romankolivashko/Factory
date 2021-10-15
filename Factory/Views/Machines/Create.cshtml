@@ -11,5 +11,12 @@
   @Html.TextBoxFor(model => model.Name)
   <input type="submit" value="Add new machine" />
 }
-<p>@Html.ActionLink("Show all machines", "Index")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+<div class="row justify-content-start">
+  <div class="col">
+    <p>@Html.ActionLink("Show all machines", "Index")</p>
+  </div>
+  <div class="col">
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  </div>
+</div>
