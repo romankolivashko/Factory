@@ -4,26 +4,36 @@
 
 @model Factory.Models.Engineer
 
-<h2>Edit</h2>
+<div class="row justify-content-start">
+  <div class="col-3">
+    <p>@Html.ActionLink("Back to engineers", "Index")</p>
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  </div>
+  <div class="col-9">
+    <h2>Edit @Html.DisplayFor(model => model.Description)'s record</h2>
+    <br>
+    @using (Html.BeginForm())
+    {
+      @Html.HiddenFor(model => model.EngineerId)
+      @Html.LabelFor(model => model.Description)
+      <span> &nbsp;&nbsp;&nbsp;&nbsp; </span>
+      @Html.EditorFor(model => model.Description)
+      <br>
+      @Html.LabelFor(model => model.Hired)
+      <span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span>
+      @Html.EditorFor(model => model.Hired)
+      <br>
+      @Html.Label("Select Machine")
+      <span>&nbsp;</span>
+      @Html.DropDownList("MachineId")
+      <span> &nbsp; </span>
+      @Html.LabelFor(model => model.Licensed)
+      <span>&nbsp;</span>
+      @Html.CheckBoxFor(model => model.Licensed)
+      <br>
+      <br>
+      <input type="submit" value="Save" />
+    }
 
-<h4>Edit this task: @Html.DisplayFor(model => model.Description)</h4>
-
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.EngineerId)
-
-  @Html.LabelFor(model => model.Description)
-  @Html.EditorFor(model => model.Description)
-
-  @Html.LabelFor(model => model.Hired)
-  @Html.EditorFor(model => model.Hired)
-
-  @Html.Label("Select Machine")
-  @Html.DropDownList("MachineId")
-  @Html.LabelFor(model => model.Licensed)
-  @Html.CheckBoxFor(model => model.Licensed)
-  <input type="submit" value="Save"/>
-}
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+  </div>
+</div>

@@ -4,18 +4,24 @@
 
 @model Factory.Models.Engineer
 
-<h2>Add a machine</h2>
+<div class="row justify-content-start">
+  <div class="col-3">
+    <p>@Html.ActionLink("Back to List", "Index")</p>
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  </div>
+  <div class="col-9">
 
-<h4>Add a machine to this task: @Html.DisplayFor(model => model.Description)</h4>
+    <h2>Add machine to @Html.DisplayFor(model => model.Description)</h2>
+    <br>
+    @using (Html.BeginForm())
+    {
+      @Html.HiddenFor(model => model.EngineerId)
 
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.EngineerId)
+      @Html.Label("Select Machine")<span>&nbsp;</span>
+      @Html.DropDownList("MachineId")
+      <br><br>
+      <input type="submit" value="save" />
+    }
 
-  @Html.Label("Select Machine")
-  @Html.DropDownList("MachineId")
-
-  <input type="submit" value="save"/>
-}
-
-<p>@Html.ActionLink("Back to List", "Index")</p>
+  </div>
+</div>

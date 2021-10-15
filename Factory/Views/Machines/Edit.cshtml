@@ -4,25 +4,22 @@
 
 @model Factory.Models.Machine
 
-<h2>Edit Record</h2>
-
-<h4>Edit @Html.DisplayFor(model => model.Name)</h4>
-
-@using (Html.BeginForm())
-{
-  @Html.HiddenFor(model => model.MachineId)
-
-  @Html.LabelFor(model => model.Name) <span> &nbsp; </span>
-  @Html.EditorFor(model => model.Name)
-
-  <input type="submit" value="Save" />
-}
-
 <div class="row justify-content-start">
   <div class="col">
     <p>@Html.ActionLink("Back to machines list", "Index")</p>
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
   </div>
   <div class="col">
-    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+
+    <h2>Edit Record</h2>
+    <h4>Edit @Html.DisplayFor(model => model.Name)</h4>
+
+    @using (Html.BeginForm())
+    {
+      @Html.HiddenFor(model => model.MachineId)
+      @Html.LabelFor(model => model.Name) <span> &nbsp; </span>
+      @Html.EditorFor(model => model.Name)
+      <input type="submit" value="Save" />
+    }
   </div>
 </div>

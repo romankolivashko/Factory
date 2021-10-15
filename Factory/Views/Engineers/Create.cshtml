@@ -4,32 +4,35 @@
 
 @model Factory.Models.Engineer
 
-<h4>Add new engineer</h4>
-<br>
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(model => model.Description)
-    <span></span>
-    @Html.TextBoxFor(model => model.Description)
-    <span></span>
-    @Html.LabelFor(model => model.Hired)
-    <span></span>
-    @Html.TextBoxFor(model => model.Hired, new {type = "date"})
-    <span></span>
-    @Html.Label("Select Machine")
-    <span></span>
-    @Html.DropDownList("MachineId")
-    @* @Html.HiddenFor(model => model.Licensed) *@
-    <input type="submit" value="Add new engineer" class="btn btn-default"/>
-}
-
-
-
 <div class="row justify-content-start">
-        <div class="col-sm-4">
-        <p>@Html.ActionLink("Show all engineers", "Index")</p>
-        </div>
-        <div class="col-sm-4">
-        <p>@Html.ActionLink("Home", "Index", "Home")</p>
-        </div>
+  <div class="col-3">
+    <p>@Html.ActionLink("Show all engineers", "Index")</p>
+    <p>@Html.ActionLink("Home", "Index", "Home")</p>
+  </div>
+  <div class="col-9">
+
+    <h4>Add new engineer</h4>
+    <br>
+    @using (Html.BeginForm())
+    {
+      @Html.LabelFor(model => model.Description)
+      <span>&nbsp;&nbsp;</span>
+      @Html.TextBoxFor(model => model.Description)
+      <br>
+      <br>
+      @Html.LabelFor(model => model.Hired)
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      @Html.TextBoxFor(model => model.Hired, new {type = "date"})
+      <br>
+      <br>
+      @Html.Label("Select Machine")
+      <span></span>
+      @Html.DropDownList("MachineId")
+      <br>
+      <br>
+      @* @Html.HiddenFor(model => model.Licensed) *@
+      <button class="btn btn-default float-center"><input type="submit" value="Add new engineer" /></button>
+    }
+
+  </div>
 </div>
