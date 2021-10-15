@@ -5,35 +5,36 @@
 @model Factory.Models.Engineer
 
 <div class="row justify-content-start">
-  <div class="col-3">
+  <div class="col-4">
     <h3>@Html.ActionLink("Back to engineers", "Index")</h3>
     <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
   </div>
-  <div class="col-9">
-    <h2>Edit @Html.DisplayFor(model => model.Description)'s record</h2>
-    <br>
-    @using (Html.BeginForm())
-    {
-      @Html.HiddenFor(model => model.EngineerId)
-      @Html.LabelFor(model => model.Description)
-      <span> &nbsp;&nbsp;&nbsp;&nbsp; </span>
-      @Html.EditorFor(model => model.Description)
+  <div class="col-8">
+    <div class="jumbotron">
+      <h2>Edit @Html.DisplayFor(model => model.Description)'s record</h2>
       <br>
-      @Html.LabelFor(model => model.Hired)
-      <span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span>
-      @Html.EditorFor(model => model.Hired)
-      <br>
-      @Html.Label("Select Machine")
-      <span>&nbsp;</span>
-      @Html.DropDownList("MachineId")
-      <span> &nbsp; </span>
-      @Html.LabelFor(model => model.Licensed)
-      <span>&nbsp;</span>
-      @Html.CheckBoxFor(model => model.Licensed)
-      <br>
-      <br>
-      <input type="submit" value="Save" />
-    }
-
+      @using (Html.BeginForm())
+      {
+        @Html.HiddenFor(model => model.EngineerId)
+        @Html.LabelFor(model => model.Description)
+        <span> &nbsp;&nbsp;&nbsp;&nbsp; </span>
+        @Html.EditorFor(model => model.Description)
+        <br>
+        @Html.LabelFor(model => model.Hired)
+        <span> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; </span>
+        @Html.EditorFor(model => model.Hired)
+        <br>
+        @Html.Label("Select Machine")
+        <span>&nbsp;</span>
+        @Html.DropDownList("MachineId")
+        <span> &nbsp; </span>
+        @Html.LabelFor(model => model.Licensed)
+        <span>&nbsp;</span>
+        @Html.CheckBoxFor(model => model.Licensed)
+        <br>
+        <br>
+        <input type="submit" value="Save" />
+      }
+    </div>
   </div>
 </div>

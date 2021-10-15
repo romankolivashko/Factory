@@ -5,12 +5,12 @@
 @model Factory.Models.Engineer
 
 <div class="row justify-content-start">
-  <div class="col-3">
+  <div class="col-4">
     <h3>@Html.ActionLink("Show all engineers", "Index")</h3>
     <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
   </div>
-  <div class="col-9">
-
+  <div class="col-8">
+    <div class="jumbotron">
     <h4><u>Add new engineer</u></h4>
     <br>
     @using (Html.BeginForm())
@@ -33,6 +33,6 @@
       @* @Html.HiddenFor(model => model.Licensed) *@
       <button class="btn btn-default float-center"><input type="submit" value="Add new engineer" /></button>
     }
-
+    </div>
   </div>
 </div>

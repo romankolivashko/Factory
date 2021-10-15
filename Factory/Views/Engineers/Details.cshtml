@@ -4,43 +4,41 @@
 
 @model Factory.Models.Engineer
 
-
-
-
 <div class="row justify-content-start">
-  <div class="col-3">
+  <div class="col-4">
     <h3>@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.EngineerId })</h3>
     <h3>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</h3>
     <h3>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</h3>
     <h3>@Html.ActionLink("Back to engineers", "Index")</h3>
     <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
   </div>
-  <div class="col-9">
-    <h2><u>Engineer Details</u></h2>
-    <br>
-    <h3>Name: @Html.DisplayFor(model => model.Description)</h3>
-    <h3>Hired: @Model.Hired.ToString("d")</h3>
+  <div class="col-8">
+    <div class="jumbotron">
+      <h2><u>Engineer Details</u></h2>
+      <br>
+      <h3>Name: @Html.DisplayFor(model => model.Description)</h3>
+      <h3>Hired: @Model.Hired.ToString("d")</h3>
 
-    @if (@Model.JoinEntities.Count == 0)
-    {
-      <h3>This engineer is not assigned to any machine.</h3>
-    }
-    else
-    {
-      <h4>Machines this engineer assigned to:</h4>
-      <ul style="list-style-type:none;">
-        @foreach (var join in Model.JoinEntities)
-        {
-          <li> ➢ @join.Machine.Name</li><br>
-
-          @using (Html.BeginForm("DeleteMachine", "Engineers"))
+      @if (@Model.JoinEntities.Count == 0)
+      {
+        <h3>This engineer is not assigned to any machine.</h3>
+      }
+      else
+      {
+        <h4>Machines this engineer assigned to:</h4>
+        <ul style="list-style-type:none;">
+          @foreach (var join in Model.JoinEntities)
           {
-            @Html.Hidden("joinId", @join.MachineEngineerId) <input type="submit" value="Remove" />
-          }
-          <br>
-        }
-      </ul>
-    }
-  </div>
+            <li> ➢ @join.Machine.Name</li><br>
 
+            @using (Html.BeginForm("DeleteMachine", "Engineers"))
+            {
+              @Html.Hidden("joinId", @join.MachineEngineerId) <input type="submit" value="Remove" />
+            }
+            <br>
+          }
+        </ul>
+      }
+    </div>
+  </div>
 </div>

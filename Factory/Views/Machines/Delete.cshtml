@@ -10,11 +10,13 @@
     <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
   </div>
   <div class="col-8">
-    <h2>Are you sure you want to delete @Html.DisplayFor(model => model.Name)?</h2>
-    <br>
-    @using (Html.BeginForm())
-    {
-      <input type="submit" value="Delete" />
-    }
+    <div class="jumbotron">
+      <h2>Are you sure you want to delete @Html.DisplayFor(model => model.Name)?</h2>
+      <br>
+      @using (Html.BeginForm())
+      {
+        <input type="submit" value="Delete" />
+      }
+    </div>
   </div>
 </div>

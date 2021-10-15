@@ -1,21 +1,21 @@
 @{
   Layout = "_Layout";
 }
+@model Factory.Models.Engineer
 
 <div class="row justify-content-start">
-  <div class="col-3">
+  <div class="col-4">
     <h3>@Html.ActionLink("Back to engineers", "Index")</h3>
     <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
   </div>
-  <div class="col-9">
-    @model Factory.Models.Engineer
-
-    <h2>Are you sure you want to delete @Html.DisplayFor(model => model.Description)?</h2>
-    <br>
-    @using (Html.BeginForm())
-    {
-      <input type="submit" value="Delete" />
-    }
-
+  <div class="col-8">
+    <div class="jumbotron">
+      <h2>Are you sure you want to delete @Html.DisplayFor(model => model.Description)?</h2>
+      <br>
+      @using (Html.BeginForm())
+      {
+        <input type="submit" value="Delete" />
+      }
+    </div>
   </div>
 </div>

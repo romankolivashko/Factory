@@ -5,12 +5,12 @@
 @model Factory.Models.Machine
 
 <div class="row justify-content-start">
-  <div class="col">
+  <div class="col-4">
     <h3>@Html.ActionLink("Back to machines list", "Index")</h3>
     <h3>@Html.ActionLink("Home", "Index", "Home")</h3>
   </div>
-  <div class="col">
-
+  <div class="col-8">
+    <div class="jumbotron">
     <h2>Edit @Html.DisplayFor(model => model.Name)</h2>
     <br>
     @using (Html.BeginForm())
@@ -20,5 +20,6 @@
       @Html.EditorFor(model => model.Name)
       <input type="submit" value="Save" />
     }
+    </div>
   </div>
 </div>
