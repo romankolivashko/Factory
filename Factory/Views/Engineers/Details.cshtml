@@ -5,7 +5,7 @@
 @model Factory.Models.Engineer
 
 <div class="row justify-content-start">
-  <div class="col-4">
+  <div class="col-4 menu">
     <h3>@Html.ActionLink("Add a Machine", "AddMachine", new { id = Model.EngineerId })</h3>
     <h3>@Html.ActionLink("Edit Engineer", "Edit", new { id = Model.EngineerId })</h3>
     <h3>@Html.ActionLink("Delete Engineer", "Delete", new { id = Model.EngineerId })</h3>

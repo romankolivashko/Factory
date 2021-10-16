@@ -7,7 +7,7 @@
 
 
 <div class="row justify-content-start">
-  <div class="col-4">
+  <div class="col-4 menu">
     <h3>@Html.ActionLink("Edit Machine", "Edit", new { id = Model.MachineId })</h3>
     <h3>@Html.ActionLink("Delete Machine", "Delete", new { id = Model.MachineId })</h3>
     <h3>@Html.ActionLink("Back to Machines", "Index")</h3>
@@ -25,11 +25,11 @@
           }
           else
           {
-            <h4>Engineers assigned:</h4>
+            <h3>Engineers assigned:</h3>
             <ul style="list-style-type:none;">
               @foreach (var join in Model.JoinEntities)
               {
-                <li>@join.Engineer.Description</li>
+                <li><h4>@join.Engineer.Description</h4></li>
               }
             </ul>
           }
