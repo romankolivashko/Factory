@@ -37,7 +37,7 @@
 * _Navigate to `/Factory.Solution/Factory` directory_
 * _Run `dotnet restore` command to download required dependencies_
 * _Run `dotnet run` command to launch the application in a console_
-* _Upon successful MySQL installation, proceed importing data:
+* Upon successful MySQL installation, proceed importing data:
   1. In Workbench: Select `Administration` Tab --> Under `Management` Tab 
   2. Select `Data Import/Restore` option
   3. In the pane to the right, select `Import from Self-Contained File` and navigate to this project's root directory
