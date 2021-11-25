@@ -1,8 +1,12 @@
 # Dr. Sillystringz's Factory
 
-#### MVC web application to help keeping track of the factory machine repairs.
+#### MVC web application uses Entity Framework, SQL many-to-many relationship to help keeping track of the factory machine repairs.
 
 #### By Roman Kolivashko
+
+## Quick look
+
+![](./Factory/wwwroot/img/factory.gif)
 
 ## Technologies Used:
 * C#
